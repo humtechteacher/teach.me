@@ -7,3 +7,4 @@ vite.config.ts.*
 setupfnm.ps1
 .env
 DEPLOYMENT_GUIDE.md
+.vercel
