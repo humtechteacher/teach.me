@@ -1,4 +1,7 @@
 import OpenAI from "openai";
+// Add this to the top of server/services/openai.ts
+import { fetch } from 'undici';
+global.fetch = fetch;
 
 // Initialize the OpenAI client with better error handling
 const apiKey = process.env.OPENAI_API_KEY;
