@@ -32,11 +32,14 @@ const MisinformationGame = () => {
     data: currentTweet,
     isLoading: tweetLoading,
     isError: tweetError,
+    error: tweetErrorDetails,
     refetch: refetchTweet
   } = useQuery<Tweet>({ 
     queryKey: ['/api/misinformation/tweet'],
     refetchOnWindowFocus: false,
-    enabled: gameState !== "completed" // Only fetch when game is active
+    enabled: gameState !== "completed", // Only fetch when game is active
+    retry: 2, // Limit retries to prevent excessive API calls
+    staleTime: 0 // Ensure fresh data
   });
 
   // Mutation for evaluating the source
@@ -194,15 +197,27 @@ const MisinformationGame = () => {
               <div className="ml-3">
                 <h3 className="font-medium text-red-800">Error loading challenge</h3>
                 <p className="text-red-700 text-sm mt-1">
-                  We couldn't load a new challenge. Please try refreshing the page.
+                  We couldn't load a new challenge. This might be due to an API key issue or server configuration problem.
                 </p>
-                <Button 
-                  variant="destructive" 
-                  className="mt-4"
-                  onClick={() => refetchTweet()}
-                >
-                  Retry
-                </Button>
+                {tweetErrorDetails && (
+                  <div className="mt-2 p-3 bg-red-100 rounded text-red-800 text-xs font-mono">
+                    {(tweetErrorDetails as any)?.message || "Unknown error"}
+                  </div>
+                )}
+                <div className="flex flex-col sm:flex-row gap-3 mt-4">
+                  <Button 
+                    variant="destructive" 
+                    onClick={() => refetchTweet()}
+                  >
+                    Retry
+                  </Button>
+                  <Button
+                    variant="outline"
+                    onClick={() => navigate("/")}
+                  >
+                    Back to Home
+                  </Button>
+                </div>
               </div>
             </CardContent>
           </Card>

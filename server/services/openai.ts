@@ -1,10 +1,13 @@
 import OpenAI from "openai";
-import dotenv from 'dotenv';
-dotenv.config();
 
-// Initialize the OpenAI client
+// Initialize the OpenAI client with better error handling
+const apiKey = process.env.OPENAI_API_KEY;
+if (!apiKey) {
+  console.error("ERROR: OPENAI_API_KEY environment variable is missing or empty");
+}
+
 const openai = new OpenAI({ 
-  apiKey: process.env.OPENAI_API_KEY 
+  apiKey: apiKey 
 });
 
 /**

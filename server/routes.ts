@@ -6,6 +6,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Create HTTP server
   const httpServer = createServer(app);
 
+  // API status check endpoint
+  app.get("/api/status", (req, res) => {
+    const apiKeyExists = !!process.env.OPENAI_API_KEY;
+    
+    res.json({
+      status: "online",
+      apiKeyConfigured: apiKeyExists,
+      timestamp: new Date().toISOString()
+    });
+  });
+
   // API routes for the misinformation game
   
   /**

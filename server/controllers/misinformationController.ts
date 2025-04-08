@@ -10,6 +10,15 @@ const tweetCache = new Map();
  */
 export async function getTweet(req: Request, res: Response) {
   try {
+    // Check if API key is available
+    if (!process.env.OPENAI_API_KEY) {
+      console.error("OPENAI_API_KEY is missing in environment variables");
+      return res.status(500).json({ 
+        message: "Server configuration error: API key missing",
+        code: "API_KEY_MISSING"
+      });
+    }
+    
     const tweet = await generateMisinformationTweet();
     
     // Store the tweet in our cache so we can access it later
@@ -23,8 +32,14 @@ export async function getTweet(req: Request, res: Response) {
     res.json(tweetForClient);
   } catch (error) {
     console.error("Error in getTweet controller:", error);
+    // More detailed error information
+    const errorMessage = error instanceof Error ? error.message : "Unknown error";
+    const errorStack = error instanceof Error ? error.stack : "";
+    console.error("Error details:", { message: errorMessage, stack: errorStack });
+    
     res.status(500).json({ 
-      message: "Failed to generate misinformation tweet" 
+      message: "Failed to generate misinformation tweet",
+      details: errorMessage
     });
   }
 }
