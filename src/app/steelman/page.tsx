@@ -41,7 +41,7 @@ export default function SteelmanChallenge() {
       <div className="max-w-2xl w-full bg-white rounded-xl shadow-xl border border-gray-200 p-8 space-y-6">
         <h1 className="text-3xl font-bold text-center text-gray-800">Steelman Challenge</h1>
         <p className="text-gray-600 text-center">
-          Upload your argumentative essay. Then engage in a 5–7 turn conversation to steelman the counterargument. You'll get feedback on how well you did.
+          Upload your argumentative essay. Then engage in a back and forth to steelman the counterargument. You'll get feedback on how well you did.
         </p>
         {!responses.length && (
           <div>

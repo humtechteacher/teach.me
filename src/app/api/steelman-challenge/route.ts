@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
 
   if (conversation) {
     const gradingPrompt = `You are grading a student's ability to steelman a counterargument. Below is the full back-and-forth. Grade the student's overall performance from A to F and explain briefly why.\n\n${conversation
-      .map((msg: any, i: number) => `${i % 2 === 0 ? 'Counter' : 'Student'}: ${msg}`)
+      .map((msg: string, i: number) => `${i % 2 === 0 ? 'Counter' : 'Student'}: ${msg}`)
       .join('\n')}`;
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
