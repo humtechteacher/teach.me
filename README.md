@@ -1,99 +1,36 @@
-# Educational Platform with Misinformation Game
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-A web-based teaching platform with an extensible activity framework, starting with a misinformation detection game powered by OpenAI.
+## Getting Started
 
-## Features
-
-- Home page with browsable educational activities
-- Misinformation detection game that generates AI-powered tweets with factual inaccuracies
-- AI evaluation of user-submitted sources to counter misinformation
-- Responsive design that works on mobile, tablet, and desktop
-
-## Setup Instructions
-
-### Prerequisites
-
-- Node.js (v16+)
-- npm
-- OpenAI API key
-
-### Environment Setup
-
-1. Copy the example environment file:
-
-```bash
-cp .env.example .env
-```
-
-2. Edit the `.env` file and add your OpenAI API key:
-
-```
-OPENAI_API_KEY=your_api_key_here
-```
-
-3. Install dependencies:
-
-```bash
-npm install
-```
-
-### Running the Development Server
+First, run the development server:
 
 ```bash
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-The application will be available at [http://localhost:5000](http://localhost:5000)
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Deployment
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-### Deploying to Vercel
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-1. Make sure your Vercel project has the OPENAI_API_KEY environment variable set in the Vercel dashboard.
+## Learn More
 
-2. Set up a `vercel.json` file in your project root:
+To learn more about Next.js, take a look at the following resources:
 
-```json
-{
-  "version": 2,
-  "builds": [
-    {
-      "src": "server/index.ts",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "buildCommand": "npm run build",
-        "outputDirectory": "dist/public"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "server/index.ts"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "dist/public/$1"
-    }
-  ]
-}
-```
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-3. Deploy to Vercel:
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-```bash
-vercel --prod
-```
+## Deploy on Vercel
 
-### Troubleshooting Deployment Issues
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-If you encounter issues with the API on your deployed site:
-
-1. Check that the OPENAI_API_KEY environment variable is set correctly in your hosting platform.
-2. Verify API status by visiting `/api/status` on your deployed site.
-3. Check the browser console and server logs for specific error messages.
-4. Ensure your OpenAI API key has access to the required models (gpt-4o-mini).
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

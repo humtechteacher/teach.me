@@ -1,7 +1,0 @@
-# Disable optional native modules to prevent build issues in Vercel
-optional=false
-omit=optional
-
-# Set rollup to skip native modules
-ROLLUP_SKIP_LOAD_NATIVE_PLUGIN=true
-ROLLUP_NATIVE_DISABLE=true
