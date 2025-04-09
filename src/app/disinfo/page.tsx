@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-export default function DisinfoPage() {
+export default function DisinfoPageVariantB() {
   const [tweet, setTweet] = useState('');
   const [userLink, setUserLink] = useState('');
   const [feedback, setFeedback] = useState('');
@@ -26,27 +26,41 @@ export default function DisinfoPage() {
   };
 
   return (
-    <div className="max-w-xl mx-auto mt-10 p-4 border rounded">
-      <button onClick={generateTweet} className="bg-blue-600 text-white px-4 py-2 rounded">
-        Generate Disinformation Tweet
-      </button>
-
-      {tweet && (
-        <>
-          <p className="mt-4">{tweet}</p>
-          <input
-            type="text"
-            value={userLink}
-            onChange={(e) => setUserLink(e.target.value)}
-            placeholder="Paste a link to refute the tweet"
-            className="w-full mt-4 p-2 border rounded"
-          />
-          <button onClick={validateLink} className="mt-2 bg-green-600 text-white px-4 py-2 rounded">
-            Submit
-          </button>
-          {feedback && <p className="mt-4 font-semibold">{feedback}</p>}
-        </>
-      )}
+    <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">
+      <div className="max-w-xl w-full bg-white rounded-xl shadow-xl border border-gray-200 p-8">
+        <h2 className="text-3xl font-extrabold text-center text-gray-800 mb-6">
+          Disinformation Challenge
+        </h2>
+        <button
+          onClick={generateTweet}
+          className="w-full bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-medium py-3 rounded-lg transition-transform transform hover:scale-105"
+        >
+          Generate Tweet
+        </button>
+        {tweet && (
+          <div className="mt-8 space-y-4">
+            <p className="text-lg text-gray-700">{tweet}</p>
+            <input
+              type="text"
+              value={userLink}
+              onChange={(e) => setUserLink(e.target.value)}
+              placeholder="Paste a link to refute this tweet"
+              className="w-full border border-gray-300 rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+            <button
+              onClick={validateLink}
+              className="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-3 rounded-lg transition-transform transform hover:scale-105"
+            >
+              Submit
+            </button>
+            {feedback && (
+              <p className="text-center font-semibold text-gray-600">
+                {feedback}
+              </p>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

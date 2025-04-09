@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import openai from '@/lib/openai';
 
 export async function POST(req: NextRequest) {
-  const prompt = 'Generate a tweet containing disinformation about a historical event.';
+  const prompt = 'Generate a unique tweet that contains believable disinformation.';
   const completion = await openai.chat.completions.create({
     model: 'gpt-4o-mini',
     messages: [{ role: 'user', content: prompt }],
