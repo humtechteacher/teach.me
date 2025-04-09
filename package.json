@@ -3,12 +3,18 @@
   "version": "1.0.0",
   "type": "module",
   "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
   "scripts": {
     "dev": "tsx server/index.ts",
+    "prebuild": "node -v && npm -v",
     "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
     "start": "NODE_ENV=production node dist/index.js",
     "check": "tsc",
-    "db:push": "drizzle-kit push"
+    "db:push": "drizzle-kit push",
+    "postinstall": "node -e \"if (process.platform === 'linux') { try { require.resolve('@rollup/rollup-linux-x64-gnu'); console.log('Native Rollup module exists'); } catch (e) { console.error('Module not found on Linux', e); process.exit(1); } } else { console.log('Not Linux; skipping native module check.'); }\""
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
@@ -65,6 +71,7 @@
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.1",
     "react-icons": "^5.4.0",
+    "react-refresh": "^0.17.0",
     "react-resizable-panels": "^2.1.4",
     "recharts": "^2.13.0",
     "tailwind-merge": "^2.5.4",
@@ -97,6 +104,7 @@
     "vite": "^5.4.14"
   },
   "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.39.0",
     "bufferutil": "^4.0.8"
   }
 }

@@ -11,6 +11,12 @@ if (!process.env.OPENAI_API_KEY) {
   console.error("ERROR: OPENAI_API_KEY environment variable is missing");
   // We don't exit the process here to allow the server to still start for debugging
 }
+try {
+  const modulePath = require.resolve('@rollup/rollup-linux-x64-gnu');
+  console.log('Rollup native module found at:', modulePath);
+} catch (err) {
+  console.error('Rollup native module is missing:', err);
+}
 
 const app = express();
 app.use(express.json());

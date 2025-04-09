@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { generateMisinformationTweet, evaluateSource } from "../services/openai";
+import { generateMisinformationTweet, evaluateSource } from "../services/openai.js";
 
 // Cache to store tweet data so we don't lose the misinformation details
 // when sending tweets to the client
