@@ -8,3 +8,4 @@ setupfnm.ps1
 .env
 DEPLOYMENT_GUIDE.md
 .vercel
+.next
