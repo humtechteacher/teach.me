@@ -1,44 +1,36 @@
+'use client';
+
 import Link from 'next/link';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 text-gray-800">
-      <div className="max-w-4xl mx-auto px-6 py-20">
-        <header className="mb-16 text-center">
-          <h1 className="text-5xl font-bold text-indigo-700 mb-4">Humanities Tech Tools</h1>
-          <p className="text-xl text-gray-700">
-            Explore interactive tools designed to enhance student learning in the Humanities.
-          </p>
-        </header>
-
-        <section className="grid gap-8 sm:grid-cols-2">
-          {/* Disinformation Activity Card */}
-          <Link
-            href="/disinfo"
-            className="block p-6 bg-white shadow-md rounded-lg border hover:shadow-lg transition-shadow"
-          >
-            <h2 className="text-2xl font-semibold text-indigo-600 mb-2">
-              🕵️‍♂️ Disinformation Challenge
+    <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center py-16">
+      <div className="max-w-xl w-full bg-white rounded-xl shadow-xl border border-gray-200 p-8">
+        <h1 className="text-4xl font-extrabold text-center text-gray-800 mb-6">
+          Welcome to Activity Hub
+        </h1>
+        <p className="text-lg text-center text-gray-600 mb-8">
+          Explore interactive and engaging activities designed for high school learners in English, History, and Social Science. 
+          Click an activity below to get started.
+        </p>
+        <div className="space-y-4">
+          <Link href="/disinformation">
+            <h2 className="w-full bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-medium py-3 rounded-lg transition-transform transform hover:scale-105 text-center block">
+              Disinformation Game
             </h2>
-            <p className="text-gray-600">
-              Analyze AI-generated disinformation tweets and provide sources that refute them.
-              Test your critical thinking skills!
-            </p>
           </Link>
-
-          {/* Placeholder for future activities */}
-          <div className="p-6 bg-white shadow-md rounded-lg border opacity-50 cursor-not-allowed">
-            <h2 className="text-2xl font-semibold text-gray-400 mb-2">📚 More Activities Coming Soon</h2>
-            <p className="text-gray-400">
-              Stay tuned for more interactive experiences for literature, history, and philosophy.
-            </p>
-          </div>
-        </section>
-
-        <footer className="mt-24 text-center text-sm text-gray-500">
-          &copy; {new Date().getFullYear()} Humanities Tech Tools. Built for curious minds.
-        </footer>
+          <Link href="/steelman">
+            <h2 className="w-full bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white font-medium py-3 rounded-lg transition-transform transform hover:scale-105 text-center block">
+              Steelman Challenge
+            </h2>
+          </Link>
+          <Link href="/activities/history-quiz">
+            <h2 className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-medium py-3 rounded-lg transition-transform transform hover:scale-105 text-center block">
+              History Quiz Show
+            </h2>
+          </Link>
+        </div>
       </div>
-    </main>
+    </div>
   );
 }
