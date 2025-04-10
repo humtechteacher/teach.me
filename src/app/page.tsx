@@ -14,7 +14,7 @@ export default function Home() {
           Click an activity below to get started.
         </p>
         <div className="space-y-4">
-          <Link href="/disinformation">
+          <Link href="/disinfo">
             <h2 className="w-full bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-medium py-3 rounded-lg transition-transform transform hover:scale-105 text-center block">
               Disinformation Game
             </h2>
